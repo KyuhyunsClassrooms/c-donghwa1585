@@ -1,36 +1,36 @@
 #include <stdio.h>
 
-/*
-    1. [설계]에서 정의한 변수, 배열, (필요하면) 구조체를 여기에 선언하세요.
-    
-    예시 - 배열 사용:
-    char names[100][20];
-    int scores[100];
-    int count = 0;
-    
-    예시 - 구조체 사용 (선택):
-    struct Student {
-        char name[20];
-        int score;
-    };
-    struct Student students[100];
-*/
+#define MAX 100
 
-
-/*
-    2. [알고리즘]에서 설계한 핵심 기능 함수들을 여기에 선언하세요.
-*/
-
+char names[MAX][20];
+int count = 0;
 
 int main() {
-    
-    printf("--- C언어 미니 프로젝트 시작! ---\n");
+    int menu;
 
-    /*
-        3. [알고리즘]에서 설계한 main 함수의 흐름을
-           여기에 C언어로 자유롭게 구현하세요.
-    */
-    
-    
+    while (1) {
+        printf("\n1. 출석 체크\n2. 명단 보기\n3. 종료\n선택: ");
+        scanf("%d", &menu);
+
+        if (menu == 1) {
+            printf("이름: ");
+            scanf("%s", names[count]);
+            printf("출석 완료!\n");
+            count++;
+        }
+        else if (menu == 2) {
+            printf("\n--- 출석 명단 ---\n");
+            for (int i = 0; i < count; i++)
+                printf("%d. %s\n", i + 1, names[i]);
+        }
+        else if (menu == 3) {
+            printf("종료합니다.\n");
+            break;
+        }
+        else {
+            printf("잘못 입력!\n");
+        }
+    }
+
     return 0;
 }
